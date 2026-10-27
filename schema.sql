@@ -5,7 +5,7 @@ CREATE TABLE jogos(
 id int, primary key, auto_increment,
 titulo text, not null,
 plataforma text, not null,
-desenvolvedora text not null,
+desenvolvedora text, not null,
 imagem_url text, not null,
 preco decimal, not null,
 data_cadastro timestamp, datetime, not null

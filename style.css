@@ -5,8 +5,7 @@
 }
 body{
     font-family: Arial, sans-serif;
-    background: #abbdd1;
-    color: #252525;
+    background: radial-gradient(circle,rgba(151, 172, 186, 1) 0%, rgba(81, 115, 140, 1) 49%, rgba(2, 10, 26, 1) 100%);
 }
 header{
     background: #092b38c1;
@@ -19,7 +18,7 @@ header h1{
     font-weight: 900;
 }
 header p{
-    color: #7a7a7a;
+    color: #d1cbcb;
 
 }
 .container{
@@ -39,7 +38,7 @@ titulo-secao{
     margin-bottom: 8px;
 }
 .titulo-secao p{
-    color:#70676f;
+    color:#ddd9dc;
 }
 button{
     border: none;
@@ -51,14 +50,14 @@ button{
     cursor:pointer;
 }
 button:hover{
-    background: #e92b35;
+    background: #2c233e;
 }
 .listar-discos{
     display:grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1 fr));
 }
 #mensagemVazia{
- color: #70675f;
+ color: #ddd9dc;
 }
 .card-disco{
     background:white;
