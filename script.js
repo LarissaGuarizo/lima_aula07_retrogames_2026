@@ -1,3 +1,4 @@
+const API_URL = "http://localhost:3000"
 const btnCadastrar = document.getElementById('btnCadastrar')
 const btnCancelar = document.getElementById("btnCancelar")
 const modal = document.getElementById('Cadastro')
