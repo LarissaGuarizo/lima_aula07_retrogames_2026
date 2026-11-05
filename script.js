@@ -12,6 +12,29 @@ btnCadastrar.addEventListener("click", ()=>{
 btnCancelar.addEventListener("click",()=>{
     modal.closest()
 })
+
+async function carregarJogos() {
+     try{
+        const resposta = await fetch(API_URL + '/listar')
+        const jogos = await resposta.json()
+
+        lista.innerHTML=""
+        if(jogos.length == 0){
+            mensagemVazia.hidden = false
+            lista.appendChild(mensagemVazia)
+            return
+        }
+
+        mensagemVazia.hidden = true
+        //Renderize os discos encontrados
+        jogos.forEach(jogo => {
+            criarCard(jogo.album, jogo.artista, jogo.genero, jogo.imagem, jogo.preco)
+        })
+    }catch (erro){
+        console.error("Erro ao carregar jogos: ", erro)
+        alert("Não foi possível conectar ao servidor")
+    }
+}
 form.addEventListener("submit",(evento)=>{
     evento.preventDefault()
     const jogo = document.getElementById("jogo").value.trim()

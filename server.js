@@ -6,7 +6,7 @@ const db = mysql.createConnection({
     host: "localhost",
     user: "root",
     password:"",
-    database: "db_discoteca"
+    database: "db_retrogames"
 })
 
 db.connect((erro) =>{
@@ -19,7 +19,7 @@ db.connect((erro) =>{
 })
 
 const mostrarJogos =(req, res) =>{
-    const sql = "id, titulo, plataforma, desenvolvedora, imagem_url AS imagem, preco, data_cadastro"
+    const sql = "select id, titulo, plataforma, desenvolvedora, imagem_url AS imagem, preco from jogos"
 db.query(sql,(erro, resultados)=>{
     if(erro){
         return res.status(500).send("Erro ao consultar banco de dados",erro)
@@ -28,10 +28,10 @@ db.query(sql,(erro, resultados)=>{
     })
 }
 const novoJogo =(req, res) =>{
-    const {id, titulo, plataforma, desenvolvedora, imagem, preco, data_cadastro}=req.body
-    if(id&& titulo && plataforma && desenvolvedora && imagem && preco && data_cadastro){
-        const sql = "INSERT INTO discos (id, titulo, plataforma, desenvolvedora, imagem, preco, data_cadastro)VALUES(?,?,?,?,?,?,?)"
-        const valores = [id, titulo, plataforma, desenvolvedora, imagem, preco, data_cadastro]
+    const {titulo, plataforma, desenvolvedora, imagem, preco}=req.body
+    if(titulo && plataforma && desenvolvedora && imagem && preco){
+        const sql = "INSERT INTO jogos (titulo, plataforma, desenvolvedora, imagem, preco)VALUES(?,?,?,?,?)"
+        const valores = [titulo, plataforma, desenvolvedora, imagem, preco]
 
 db.query(sql,(erro, resultados)=>{
     if(erro){
@@ -50,8 +50,8 @@ app.use(express.urlencoded({extended: true}))
 
 const porta=3000
 
-app.get("/jogos", mostrarJogos)
-app.post("/jogo", novoJogo)
+app.get("/listar", mostrarJogos)
+app.post("/cadastrar", novoJogo)
 
 app.listen(porta,()=>{
     console.log(`Servidor rodando (alegria) porta ${porta}`)
