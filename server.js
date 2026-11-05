@@ -3,7 +3,7 @@ const cors = require ("cors")
 const mysql = require("mysql2")
 
 const db = mysql.createConnection({
-    host: localhost,
+    host: "localhost",
     user: "root",
     password:"",
     database: "db_discoteca"
@@ -47,6 +47,8 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
+
+const porta=3000
 
 app.get("/jogos", mostrarJogos)
 app.post("/jogo", novoJogo)
